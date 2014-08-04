@@ -358,7 +358,10 @@
 
 			// save original image sizes
 			var $img = this.$items.find( this.options.imgSizeItemSelector ).first();
-			this.imgSize = { width : $img.outerWidth( true ), height : $img.outerHeight( true ) };
+
+			this.imgSize = { width : this.options.imageWidth || $img.outerWidth( true ), 
+				height: this.options.imageHeight || $img.outerHeight( true ) };
+			this.imgSize.width += this.options.margin || 0;
 
 			this._setItemsSize();
 			this.options.orientation === 'horizontal' ? this.$el.css( 'max-height', this.imgSize.height ) : this.$el.css( 'height', this.options.minItems * this.imgSize.height );
